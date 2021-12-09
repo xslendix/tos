@@ -1,7 +1,5 @@
 #include "Mods.HC"
 
-// I included this file as an example
-
 U0 Main()
 {
   //OnceExe;
@@ -22,7 +20,7 @@ U0 Main()
       break;
   }
 
-  SetTheme("dark");
+  SetTheme("moony");
 }
 
 Main;
