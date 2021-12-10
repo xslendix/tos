@@ -1,0 +1,2 @@
+Kernel/FontStd.HC.Z
+Kernel/KMisc.HC.Z
