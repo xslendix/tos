@@ -1,3 +1,4 @@
 Kernel/FontStd.HC.Z
 Kernel/KMisc.HC.Z
 Adam/Gr/GrComposites.HC.Z
+Home/MakeHome.HC.Z

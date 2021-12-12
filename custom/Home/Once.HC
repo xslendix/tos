@@ -1,5 +1,3 @@
-#include "Mods.HC"
-
 U0 Main()
 {
   //OnceExe;
@@ -21,8 +19,6 @@ U0 Main()
       Type("::/Doc/Customize.DD");
       break;
   }
-
-  SetTheme("moony");
-}
+}
 
 Main;
