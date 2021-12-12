@@ -74,3 +74,13 @@ public U0 SetOldFont()
 {
   // TO BE IMPLEMENTED!
 }
+
+////////////////////////////////////////////
+//                ALIASES                 //
+////////////////////////////////////////////
+
+public U0 Cls()
+{
+    DocClear;
+}
+
