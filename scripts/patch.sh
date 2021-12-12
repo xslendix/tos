@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./mount.sh
+./scripts/mount.sh
 
 echo '[INFO] Checking if valid TempleOS installation'
 if [ -d 'mnt/0000Boot' ]; then

@@ -61,9 +61,9 @@ if [ ! -f tos.img ]; then
 
     qemu-system-x86_64 $QEMU_FLAGS -cdrom "$tos_file"
 
-    ./patch.sh
+    ./scripts/patch.sh
 fi
 
-./umount.sh
+./scripts/umount.sh
 qemu-system-x86_64 $QEMU_FLAGS
 
