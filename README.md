@@ -1,4 +1,9 @@
-This project assumes you already installed TempleOS inside tos.img
+# xSlendiX's TempleOS rice
 
-To patch the system, run ./patch.sh
+To get a VM working, first you need to make sure you have QEMU installed
+and that you are working inside a \*NIX enviroment such as GNU/Linux.
+
+After you made sure that you have the right prerequisites, you can now
+start/create a VM using `./start.sh`, or if you wish to use VNC, use
+`./start.sh vnc`
 
