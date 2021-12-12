@@ -1,8 +1,15 @@
 #!/bin/sh
 
-kvm_flags=""
+QEMU_FLAGS="-smp cores=$(nproc),threads=1,sockets=1 -m 2G -drive file=tos.img,index=0,media=disk,format=raw"
+
 if [ -e "/dev/kvm" ]; then
-    kvm_flags="-enable-kvm"
+    QEMU_FLAGS="-enable-kvm $QEMU_FLAGS"
+fi
+
+if [ "$1" = "vnc" ]; then
+    QEMU_FLAGS="$QEMU_FLAGS -vnc :0"
+else
+    QEMU_FLAGS="$QEMU_FLAGS -display gtk,zoom-to-fit=on"
 fi
 
 if [ ! -f tos.img ]; then
@@ -51,19 +58,12 @@ if [ ! -f tos.img ]; then
     echo '[INFO] Starting installer virtual machine'
     echo '       You need to follow the on screen instructions.'
     echo '       When it says you need to reboot, close the VM.'
-    if [ "$1" = "vnc" ]; then
-        qemu-system-x86_64 $kvm_flags -m 2G -hda tos.img -cdrom "$tos_file" -smp cores=$(nproc),threads=1,sockets=1 -vnc
-    else
-        qemu-system-x86_64 $kvm_flags -m 2G -hda tos.img -cdrom "$tos_file" -smp cores=$(nproc),threads=1,sockets=1 -display gtk,zoom-to-fit=on
-    fi
+
+    qemu-system-x86_64 $QEMU_FLAGS -cdrom "$tos_file"
 
     ./patch.sh
 fi
 
 ./umount.sh
-if [ "$1" = "vnc" ]; then
-    qemu-system-x86_64 $kvm_flags -m 2G -hda tos.img -smp cores=$(nproc),threads=1,sockets=1 -vnc :0
-else
-    qemu-system-x86_64 $kvm_flags -m 2G -hda tos.img -smp cores=$(nproc),threads=1,sockets=1 -display gtk,zoom-to-fit=on
-fi
+qemu-system-x86_64 $QEMU_FLAGS
 
