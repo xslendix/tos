@@ -10,6 +10,10 @@ If you temporarely, for some reason, have the old font back, use the
 SetOldFont() function provided in this file.
 */
 
+////////////////////////////////////////////
+//                THEMES                  //
+////////////////////////////////////////////
+
 public CBGR48 gr_palette_moony[COLORS_NUM]={
 0xDDDDDDDDDDDD, 0x41414141ABAB, 0x0000AAAA5252, 0x0000AAAAAAAA,
 0x7A7A85850404, 0x8f8f0404b5b5, 0x66660202BDBD, 0x96969696A8A8,
@@ -61,6 +65,10 @@ public U0 SetTheme(U64 *theme)
     fp_set_std_palette = &SetThemeStd;
   }
 }
+
+////////////////////////////////////////////
+//                 FONTS                  //
+////////////////////////////////////////////
 
 public U0 SetOldFont()
 {
