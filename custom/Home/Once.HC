@@ -10,7 +10,7 @@ U0 Main()
         "When asked for mount points, say 'C'\n";
         BootHDIns;
         Del("::/Home/Compile.DD");
-        "\n\n\n$$LTRED$$$$BK,1$$PLEASE RESTART FOR CHANGES TO TAKE EFFECT!$$FG$$$$BK,0$$\n\n\n";
+        Reboot;
         break;
       }
 
