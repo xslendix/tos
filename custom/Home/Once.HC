@@ -1,32 +1,5 @@
 #include "Mods.HC"
 
-// This program compiles only the kernel and then deletes itself.
-
-U0 Coompile()
-{
-    if ( Cmp("/Kernel/Kernel", "Kernel", , ':') )
-    {
-        "Failed compiling kernel.\n";
-    }
-    else
-    {
-        "Kernel compiled. Installing.\n";
-        Move("/Kernel/Kernel.BIN.Z", "/Kernel.BIN.C");
-        if (!FileFind("/Kernel.BIN.C"))
-        {
-            "No Kernel.BIN.C. Something bad happened.\n";
-        }
-        else
-        {
-            "Kernel succesfuly installed\n\n\n";
-            "$$LTRED$$$$BK,1$$PLEASE RESTART FOR CHANGES TO TAKE EFFECT!$$FG$$$$BK,0$$\n\n\n";
-        }
-    }
-
-    Del("::/Home/Compile.DD");
-}
-
-
 U0 Main()
 {
   //OnceExe;
@@ -34,7 +7,12 @@ U0 Main()
     case BOOT_SRC_RAM:
     case BOOT_SRC_HARDDRV:
       if (FileFind("::/Home/Compile.DD")) {
-        Coompile;
+        "You are now going to compile and install a new kernel.\n";
+        "Please proceed with the default options.\n";
+        "When asked for mount points, say 'C'\n";
+        BootHDIns;
+        Del("::/Home/Compile.DD");
+        "\n\n\n$$LTRED$$$$BK,1$$PLEASE RESTART FOR CHANGES TO TAKE EFFECT!$$FG$$$$BK,0$$\n\n\n";
         break;
       }
 
