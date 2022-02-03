@@ -1,6 +1,6 @@
 #!/bin/sh
 
-QEMU_FLAGS="-smp cores=$(nproc),threads=1,sockets=1 -m 2G -drive file=tos.img,index=0,media=disk,format=raw"
+QEMU_FLAGS="-smp cores=$(nproc),threads=1,sockets=1 -m 2G -drive file=tos.img,index=0,media=disk,format=raw -serial telnet:localhost:4321,server,nowait"
 
 if [ -e "/dev/kvm" ]; then
     QEMU_FLAGS="-enable-kvm $QEMU_FLAGS"
@@ -55,13 +55,15 @@ if [ ! -f tos.img ]; then
     echo '[INFO] Creating virtual HDD'
     qemu-img create tos.img 2G
 
-    echo '[INFO] Starting installer virtual machine'
+    echo '[INFO] Starting 1st stage installer virtual machine'
     echo '       You need to follow the on screen instructions.'
     echo '       When it says you need to reboot, close the VM.'
 
     qemu-system-x86_64 $QEMU_FLAGS -cdrom "$tos_file"
 
     ./scripts/patch.sh
+
+    ./scripts/create_install_iso.sh
 fi
 
 ./scripts/umount.sh
