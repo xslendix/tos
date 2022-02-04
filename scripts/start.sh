@@ -66,6 +66,11 @@ if [ ! -f tos.img ]; then
     ./scripts/create_install_iso.sh
 fi
 
+CD="$(find . -maxdepth 1 -name '*.ISO.C' -print -quit)"
+if [ -n "$CD" ]; then
+    QEMU_FLAGS="$QEMU_FLAGS -cdrom $CD"
+fi
+
 ./scripts/umount.sh
 qemu-system-x86_64 $QEMU_FLAGS
 
