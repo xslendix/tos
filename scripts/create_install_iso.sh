@@ -1,6 +1,13 @@
 #!/bin/sh
 
+if ! command -v mkarchiso &> /dev/null ; then
+    echo '[WARN] Archiso not detected. Second stage installer is now disabled'
+    exit
+fi
+
 force=0
+
+set -e
 
 if [ "$1" = "force" ]; then
     force=1
